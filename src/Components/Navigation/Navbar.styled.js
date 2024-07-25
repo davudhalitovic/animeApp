@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export const Navigation = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
   width: 100%;
+  
 `;
 
 export const Nav = styled.nav`
@@ -15,17 +15,18 @@ export const Nav = styled.nav`
   width: 100%; /* Full width */
   padding: 1rem;
   margin: 0;
-  position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Position it at the top */
-  left: 0; /* Start from the left edge */
-  z-index: 1000; /* Ensure it's above other content */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  z-index: 1000; 
+  box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
 `;
 
 export const NavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Full width of the navbar */
+  width: 100%; 
   padding: 0.5rem;
 
   img {
@@ -36,7 +37,7 @@ export const NavWrapper = styled.div`
   h1 {
     color: #fff;
     font-size: 1.5rem;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
   }
 `;
 
@@ -50,6 +51,7 @@ export const SidebarContainer = styled.div`
   position: fixed; 
   top: 85px; 
   left: 0; 
+  box-shadow: 2px 2px 0px rgba(255, 255, 255, 1);
   * {
     margin: 1rem;
   }
@@ -62,7 +64,13 @@ export const SidebarLink = styled(Link)`
   &:hover {
     text-decoration: none;
     transition: 200ms;
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
     font-weight: bold;
+  }
+
+  &:focus{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
   }
 `;
