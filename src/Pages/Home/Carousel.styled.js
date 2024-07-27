@@ -69,16 +69,15 @@ const StyledImage = styled.img`
 
 const HoverInfo = styled.div`
     position: absolute;
-    bottom: -10px;
-    right: -20px;
     left: -10px;
+    top: -10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.35);
     color: #fff;
     padding: 15px;
     box-sizing: border-box;
@@ -97,6 +96,7 @@ const DotsContainer = styled.div`
     position: absolute;
     bottom: 10px;
     width: 100%;
+    margin-bottom: 0.2rem;
     z-index: 2; /* Ensure dots are above other content */
 `;
 

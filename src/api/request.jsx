@@ -39,6 +39,50 @@ export async function AnimeApi() {
   }
 }
 
+export async function fetchAdventureAnime() {
+  try {
+    const response = await instance.get('/anime', {
+      params: {
+        'filter[genres]': 'adventure',
+        'sort': '-user_count', 
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch adventure anime:', error);
+    throw error;
+  }
+}
+export async function fetchRomanceAnime() {
+  try {
+    const response = await instance.get('/anime', {
+      params: {
+        'filter[genres]': 'romance',
+        'sort': '-user_count', 
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch romance anime:', error);
+    throw error;
+  }
+}
+export async function fetchHorrorAnime() {
+  try {
+    const response = await instance.get('/anime', {
+      params: {
+        'filter[genres]': 'horror',
+        'sort': '-user_count', 
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch horror anime:', error);
+    throw error;
+  }
+}
+
+
 export async function MangaApi() {
   try {
     const response = await axios.get('https://kitsu.io/api/edge/manga', {
@@ -52,4 +96,31 @@ export async function MangaApi() {
     throw error; 
   }
 }
-
+export async function fetchAdventureManga() {
+  try {
+    const response = await instance.get('/manga', {
+      params: {
+        'filter[genres]': 'adventure',
+        'sort': '-user_count', 
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch adventure manga:', error);
+    throw error;
+  }
+}
+export async function fetchActionManga() {
+  try {
+    const response = await instance.get('/manga', {
+      params: {
+        'filter[genres]': 'action',
+        'sort': '-user_count', 
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch action manga:', error);
+    throw error;
+  }
+}
