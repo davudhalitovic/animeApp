@@ -9,6 +9,7 @@ function Sidebar() {
         <SidebarLink to="/manga">Manga</SidebarLink>
         <SidebarLink to="/favorites">Favorites</SidebarLink>
         <SidebarLink to="/anime">Anime</SidebarLink>
+        <SidebarLink to="/about">About</SidebarLink>
       </SidebarContainer>
     )
 }
