@@ -1,3 +1,3 @@
 function MangaPage() {}
 
-export default MangaPage
+export default MangaPage;
