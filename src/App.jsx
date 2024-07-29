@@ -8,7 +8,9 @@ import Preview from "./Pages/Preview/Preview";
 import Favorites from "./Pages/Favorites/Favorites";
 import About from "./Pages/About/About";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
 import AnimeGirl from "./Components/Feature/AnimeGirl";
+
 function App() {
   return (
     <>
@@ -22,6 +24,7 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
       <AnimeGirl />
+      <Footer />
     </>
   );
 }
