@@ -5,28 +5,42 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
 export const StyledFormControl = styled(FormControl)`
-  width: 20%;
-  margin-right: 50px;
+  margin: 20px 30px;
+  width: 15%;
   background-color: #333;
   border-radius: 4px;
-  color: white;
+  & .MuiInputBase-root {
+    color: white;
+  }
 `;
 
 export const StyledSelect = styled(Select)`
-  .MuiSelect-select {
+  & .MuiSelect-select {
     padding: 10px;
+    color: white;
+    background-color: #333;
+    border-radius: 4px;
     border-color: white;
+  }
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: white;
+    }
+    &:hover fieldset {
+      border-color: #00ff00;
+    }
+    &.Mui-focused fieldset {
+      border-color: #00ff00;
+    }
   }
 `;
 
 export const StyledInputLabel = styled(InputLabel)`
+  color: white;
   top: -6px;
   left: 14px;
-  border-color: white;
-
   &.Mui-focused {
-    top: -6px;
-    border-color: white;
+    color: white;
   }
 `;
 
