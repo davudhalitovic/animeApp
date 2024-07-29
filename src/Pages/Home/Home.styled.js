@@ -6,6 +6,7 @@ export const CategoryWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     overflow-x: hidden;
+    overflow-y: hidden;
     width: 90%;
     margin-left: 150px;
     `

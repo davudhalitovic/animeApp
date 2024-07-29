@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { PreviewContext } from "../../Context/PreviewContext";
 import { FavoritesContext } from "../../Context/FavoritesContext";
 import { Button, Container, Decsription, Img } from "./Preview.styled";
+import { Link } from "react-router-dom";
 
 function PreviewPage() {
     const { dataPreview } = useContext(PreviewContext);
@@ -20,7 +21,7 @@ function PreviewPage() {
             <Decsription>
                 <h1>{dataPreview.attributes.canonicalTitle}</h1>
                 <p>{dataPreview.attributes.description}</p>
-                <Button onClick={() => addFavorite(dataPreview)}>Add to Favorites</Button>
+                <Link to="/favorites"><Button onClick={() => addFavorite(dataPreview)}>Add to Favorites</Button></Link>
             </Decsription>
         </Container>
     );

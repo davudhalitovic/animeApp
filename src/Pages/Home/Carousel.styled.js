@@ -69,8 +69,9 @@ const StyledImage = styled.img`
 
 const HoverInfo = styled.div`
     position: absolute;
-    left: -10px;
+    left: 0px;
     top: -10px;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
