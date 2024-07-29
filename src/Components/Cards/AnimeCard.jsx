@@ -1,12 +1,13 @@
 import React from "react";
-import { AniCard } from "./AnimeCard.Style";
+import { AniCard, BackgroundImage, AnimeTitle } from "./AnimeCard.Style";
 
-function AnimeCard({ coverImage, title }) {
+const AnimeCard = ({ coverImage, title }) => {
   return (
-    <>
-      <AniCard style={{ backgroundImage: `url(${coverImage})` }} />
-    </>
+    <AniCard>
+      <BackgroundImage src={coverImage} alt={title} />
+      <AnimeTitle>{title}</AnimeTitle>
+    </AniCard>
   );
-}
+};
 
 export default AnimeCard;

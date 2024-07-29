@@ -5,8 +5,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
 export const StyledFormControl = styled(FormControl)`
-  margin: 20px 0;
-  width: 30%;
+  width: 20%;
+  margin-right: 50px;
   background-color: #333;
   border-radius: 4px;
   color: white;
@@ -15,21 +15,25 @@ export const StyledFormControl = styled(FormControl)`
 export const StyledSelect = styled(Select)`
   .MuiSelect-select {
     padding: 10px;
+    border-color: white;
   }
 `;
 
 export const StyledInputLabel = styled(InputLabel)`
   top: -6px;
   left: 14px;
+  border-color: white;
+
   &.Mui-focused {
     top: -6px;
+    border-color: white;
   }
 `;
 
 export const StyledMenuItem = styled(MenuItem)`
-  background-color: #333 !important;
+  background-color: #333;
   color: white;
   &:hover {
-    background-color: #555 !important;
+    background-color: #555;
   }
 `;

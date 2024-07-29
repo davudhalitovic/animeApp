@@ -7,11 +7,26 @@ import { StyledFormControl, StyledSelect } from "./CategorySelect.Styled";
 const CategorySelect = ({ selectedCategory, onCategoryChange }) => {
   const [categories, setCategories] = useState([]);
 
+  const predefinedCategories = [
+    { id: "adventure", attributes: { slug: "adventure", title: "Adventure" } },
+    { id: "action", attributes: { slug: "action", title: "Action" } },
+    { id: "fantasy", attributes: { slug: "fantasy", title: "Fantasy" } },
+    { id: "crime", attributes: { slug: "crime", title: "Crime" } },
+    { id: "drama", attributes: { slug: "drama", title: "Drama" } },
+    { id: "romance", attributes: { slug: "romance", title: "Romance" } },
+    {
+      id: "supernatural",
+      attributes: { slug: "supernatural", title: "Supernatural" },
+    },
+    { id: "magic", attributes: { slug: "magic", title: "Magic" } },
+    { id: "horror", attributes: { slug: "horror", title: "Horror" } },
+  ];
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const categoriesData = await fetchAnimeCategories();
-        setCategories(categoriesData);
+        setCategories([...predefinedCategories, ...categoriesData]);
       } catch (error) {
         console.error("Failed to fetch anime categories:", error);
       }

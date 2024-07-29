@@ -14,7 +14,10 @@ export const MainContent = styled.div`
 `;
 
 export const InputBox = styled.div`
-  display: block;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   border-bottom: 3px solid white;
   padding: 20px 10px;

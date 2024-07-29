@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AnimeApi } from "../../api/request";
 import { MainContent, InputBox } from "./AnimePage.styled";
 import AnimeCard from "../../Components/Cards/AnimeCard";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import CategorySelect from "../../Components/CategorySelect/CategorySelect";
+import SearchBar from "../../Components/SearchBar/SearchBar";
+import { PreviewContext } from "../../Context/PreviewContext";
+import { Link } from "react-router-dom";
 
 function AnimePage() {
-  //  STATE HOOKS
+  // STATE HOOKS
   const [animeList, setAnimeList] = useState([]);
   const [nextPage, setNextPage] = useState("/anime");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  //  LOAD ON SCROLL
-  const loadMoreAnime = async () => {
+  const { setDataPreview } = useContext(PreviewContext);
+
+  // LOAD ON SCROLL
+  const loadMoreAnime = async (category = selectedCategory) => {
     if (isLoading || !nextPage) return;
     setIsLoading(true);
     try {
@@ -29,9 +35,12 @@ function AnimePage() {
   };
 
   useEffect(() => {
-    setAnimeList([]);
-    setNextPage("/anime");
-    loadMoreAnime(selectedCategory);
+    const initialLoad = async () => {
+      setAnimeList([]);
+      setNextPage("/anime");
+      await loadMoreAnime(selectedCategory);
+    };
+    initialLoad();
   }, [selectedCategory]);
 
   const handleScroll = () => {
@@ -48,12 +57,24 @@ function AnimePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isLoading, nextPage]);
 
-  //  CATEGORY SELECT
+  // CATEGORY SELECT
   const handleCategoryChange = (event) => {
     const selected = event.target.value;
     setSelectedCategory(selected);
     setAnimeList([]);
     setNextPage(selected ? `/anime?filter[categories]=${selected}` : "/anime");
+  };
+
+  // SEARCH BAR
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setAnimeList([]);
+    setNextPage(`/anime?filter[text]=${event.target.value}`);
+  };
+
+  // SHOW MORE INFO
+  const handleAnimeClick = (anime) => {
+    setDataPreview(anime);
   };
 
   return (
@@ -63,12 +84,22 @@ function AnimePage() {
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />
+        <SearchBar
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+        />
       </InputBox>
       {animeList.map((anime, index) => (
-        <AnimeCard
+        <Link
           key={`${anime.id}-${index}`}
-          coverImage={anime.attributes.posterImage?.medium}
-        />
+          to="/preview"
+          onClick={() => handleAnimeClick(anime)}
+        >
+          <AnimeCard
+            coverImage={anime.attributes.posterImage?.medium}
+            title={anime.attributes.canonicalTitle}
+          />
+        </Link>
       ))}
       {isLoading && (
         <Box display="flex" justifyContent="center" width="100%" mt={2}>

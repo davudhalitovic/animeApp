@@ -94,16 +94,17 @@ export async function fetchHorrorAnime() {
   }
 }
 
-export async function MangaApi() {
+export async function MangaApi(pageUrl = "/manga") {
   try {
-    const response = await axios.get("https://kitsu.io/api/edge/manga", {
-      headers: {
-        Accept: "application/vnd.api+json",
-      },
-    });
-    return response.data;
+    const response = await instance.get(pageUrl);
+    return {
+      data: response.data.data,
+      nextPage: response.data.links.next
+        ? response.data.links.next.replace(API_URL, "")
+        : null,
+    };
   } catch (error) {
-    console.error("Fetch failed for manga data:", error);
+    console.error("Failed to fetch manga data:", error);
     throw error;
   }
 }
