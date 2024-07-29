@@ -14,6 +14,7 @@ export const StyledFormControl = styled(FormControl)`
 
 export const StyledSelect = styled(Select)`
   .MuiSelect-select {
+    color: white;
     padding: 10px;
     border-color: white;
   }
@@ -22,6 +23,7 @@ export const StyledSelect = styled(Select)`
 export const StyledInputLabel = styled(InputLabel)`
   top: -6px;
   left: 14px;
+  color: white;
   border-color: white;
 
   &.Mui-focused {
